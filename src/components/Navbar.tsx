@@ -10,7 +10,8 @@ const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#projects", label: "Projects" },
   { href: "#process", label: "Process" },
-  // { href: "#tech", label: "Tech Stack" },
+  { href: "#tech", label: "Tech Stack" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -50,7 +51,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -64,7 +65,7 @@ export default function Navbar() {
           </nav>
 
           {/* CTA */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <a
               href="#contact"
               className="relative px-5 py-2 text-sm font-dm font-medium text-white overflow-hidden rounded-lg group"
@@ -78,7 +79,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-purple-soft hover:text-white transition-colors"
+            className="lg:hidden text-purple-soft hover:text-white transition-colors"
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -93,7 +94,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[68px] left-0 right-0 z-40 bg-void/95 backdrop-blur-xl border-b border-purple-brand/20 md:hidden"
+            className="fixed top-[68px] left-0 right-0 z-40 bg-void/95 backdrop-blur-xl border-b border-purple-brand/20 lg:hidden"
           >
             <div className="px-6 py-6 flex flex-col gap-5">
               {navLinks.map((link) => (
