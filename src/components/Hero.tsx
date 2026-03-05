@@ -88,7 +88,7 @@ export default function Hero() {
         >
           <Sparkles size={14} className="text-purple-soft" />
           <span className="text-xs font-dm text-purple-soft tracking-widest uppercase">
-            Software Services Agency
+            Software Services Origin
           </span>
         </motion.div>
 

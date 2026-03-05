@@ -28,6 +28,7 @@ jobs:
     - name: Build and Export Next.js App
       env:
         NODE_ENV: production
+        NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}
       run: |
         npm run build
 
