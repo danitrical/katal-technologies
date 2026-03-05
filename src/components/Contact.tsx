@@ -80,13 +80,13 @@ export default function Contact() {
                   <span className="font-dm text-sm">hello@katal.pk</span>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/katal-technologies/"
+                  href="https://www.https://www.linkedin.com/company/katal-technologies/-technologies/"
                   className="flex items-center gap-3 text-purple-soft/70 hover:text-white transition-colors group"
                 >
                   <div className="w-9 h-9 rounded-lg border border-purple-brand/30 bg-purple-brand/10 flex items-center justify-center group-hover:border-purple-brand/60 transition-colors">
                     <Linkedin size={16} className="text-purple-soft" />
                   </div>
-                  <span className="font-dm text-sm">linkedin.com/company/katal</span>
+                  <span className="font-dm text-sm">katal-technologies</span>
                 </a>
               </div>
             </div>
