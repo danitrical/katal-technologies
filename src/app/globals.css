@@ -17,6 +17,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #9b30ff #06060f;
+  font-size: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -35,6 +36,12 @@ body {
   color: #ffffff;
   font-family: var(--font-dm-sans);
   overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 150%;
+  }
 }
 
 /* Force all text to white */
