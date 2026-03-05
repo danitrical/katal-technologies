@@ -12,7 +12,7 @@ jobs:
     steps:
     # Step 1: Checkout the code
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # Step 2: Install Node.js
     - name: Set up Node.js
@@ -22,14 +22,14 @@ jobs:
 
     # Step 3: Install dependencies
     - name: Install Dependencies
-      run: yarn install --frozen-lockfile
+      run: npm ci
 
     # Step 4: Build and export the Next.js app
     - name: Build and Export Next.js App
       env:
-          NODE_ENV: ${{ secrets.NODE_ENV }}
+        NODE_ENV: production
       run: |
-        yarn build
+        npm run build
 
     # Step 5: Deploy via FTP to cPanel
     - name: Deploy to cPanel via FTP
@@ -38,5 +38,6 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: out/ 
-        server-dir: /     
+        local-dir: out/
+        server-dir: /
+        dangerous-clean-slate: true
