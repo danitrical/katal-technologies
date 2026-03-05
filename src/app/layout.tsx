@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   description:
     "Katal is a software services company building web, mobile, and cloud solutions for startups, SMEs, and enterprises.",
   keywords: ["software development", "web development", "mobile apps", "cloud", "DevOps", "AI"],
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     title: "Katal — Software Services",
     description: "We turn ideas into powerful software solutions.",

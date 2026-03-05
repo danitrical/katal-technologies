@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Linkedin, Twitter, Mail } from "lucide-react";
 
 const footerLinks = {
   Services: ["Web Development", "Mobile Apps", "Cloud & DevOps", "AI Solutions"],
@@ -35,7 +35,6 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               {[
                 { icon: Linkedin, href: "#" },
-                { icon: Github, href: "#" },
                 { icon: Twitter, href: "#" },
                 { icon: Mail, href: "mailto:hello@katal.pk" },
               ].map(({ icon: Icon, href }, i) => (
