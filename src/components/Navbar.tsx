@@ -6,12 +6,11 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
+  { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
   { href: "#projects", label: "Projects" },
   { href: "#process", label: "Process" },
-  { href: "#tech", label: "Tech Stack" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  // { href: "#tech", label: "Tech Stack" },
 ];
 
 export default function Navbar() {
@@ -72,7 +71,7 @@ export default function Navbar() {
             >
               <span className="absolute inset-0 bg-brand-gradient opacity-90 group-hover:opacity-100 transition-opacity" />
               <span className="absolute inset-0 rounded-lg ring-1 ring-purple-brand/50" />
-              <span className="relative">Get Started</span>
+              <span className="relative">Let's Go</span>
             </a>
           </div>
 

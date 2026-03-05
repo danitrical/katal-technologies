@@ -2,32 +2,7 @@
 
 A single-page marketing website built with **Next.js 14**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+
-- npm or yarn or pnpm
-
-### Installation
-
-```bash
-# Install dependencies
-npm install
-
-# Run the development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Production Build
-
-```bash
-npm run build
-npm start
-```
-
----
+Website: https://katal.pk
 
 ## 📁 Project Structure
 
@@ -63,29 +38,6 @@ src/
 | Text muted | `rgba(199,125,255,0.6)` |
 | Display font | Syne (Google Fonts) |
 | Body font | DM Sans (Google Fonts) |
-
----
-
-## ✅ Customization Checklist
-
-- [ ] Replace `hello@katal.dev` with your real email in `Contact.tsx` and `Footer.tsx`
-- [ ] Update social links in `Footer.tsx`
-- [ ] Add real logo image in `public/` and update `Navbar.tsx`
-- [ ] Connect the contact form to a backend (Resend, EmailJS, Formspree, etc.)
-- [ ] Update stats in `Hero.tsx` to match real numbers
-- [ ] Add real project/case study data when available
-- [ ] Set up analytics (Vercel Analytics, Plausible, etc.)
-
----
-
-## 🚢 Deployment
-
-Recommended: **Vercel** (zero-config Next.js deployment)
-
-```bash
-npm install -g vercel
-vercel
-```
 
 ---
 

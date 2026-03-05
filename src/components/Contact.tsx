@@ -12,11 +12,52 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Integration point — connect to your backend or form service
-    setSubmitted(true);
+    setError("");
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    if (!accessKey) {
+      setError("Form is not configured yet. Please email us directly.");
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: "New Project Inquiry — Katal.pk",
+          from_name: "Katal Website",
+          name: formState.name,
+          email: formState.email,
+          type: formState.type || "Not specified",
+          message: formState.message,
+          replyto: formState.email,
+        }),
+      });
+
+      const data = await res.json();
+      if (data?.success) {
+        setSubmitted(true);
+        setFormState({ name: "", email: "", type: "", message: "" });
+      } else {
+        setError(data?.message || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const projectTypes = ["Web App", "Mobile App", "Cloud / DevOps", "AI Integration", "Other"];
@@ -80,7 +121,7 @@ export default function Contact() {
                   <span className="font-dm text-sm">hello@katal.pk</span>
                 </a>
                 <a
-                  href="https://www.https://www.linkedin.com/company/katal-technologies/-technologies/"
+                  href="https://www.linkedin.com/company/katal-technologies"
                   className="flex items-center gap-3 text-purple-soft/70 hover:text-white transition-colors group"
                 >
                   <div className="w-9 h-9 rounded-lg border border-purple-brand/30 bg-purple-brand/10 flex items-center justify-center group-hover:border-purple-brand/60 transition-colors">
@@ -126,6 +167,11 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 className="p-7 rounded-2xl border border-purple-brand/20 bg-surface/70 backdrop-blur-sm space-y-5"
               >
+                {error && (
+                  <div className="rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm font-dm text-white">
+                    {error}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-dm text-purple-soft/60 mb-2 tracking-wide">
@@ -133,6 +179,7 @@ export default function Contact() {
                     </label>
                     <input
                       type="text"
+                      name="name"
                       required
                       value={formState.name}
                       onChange={(e) =>
@@ -148,6 +195,7 @@ export default function Contact() {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
                       value={formState.email}
                       onChange={(e) =>
@@ -190,6 +238,7 @@ export default function Contact() {
                   <textarea
                     required
                     rows={4}
+                    name="message"
                     value={formState.message}
                     onChange={(e) =>
                       setFormState({ ...formState, message: e.target.value })
@@ -201,12 +250,15 @@ export default function Contact() {
 
                 <button
                   type="submit"
+                  disabled={submitting}
                   className="group w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-white font-dm font-semibold text-sm relative overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-brand-gradient" />
                   <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[linear-gradient(135deg,#B040FF_0%,#FF40FB_100%)]" />
                   <span className="absolute inset-px rounded-xl bg-gradient-to-b from-white/10 to-transparent" />
-                  <span className="relative">Send Message</span>
+                  <span className="relative">
+                    {submitting ? "Sending..." : "Send Message"}
+                  </span>
                   <Send size={15} className="relative group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </form>

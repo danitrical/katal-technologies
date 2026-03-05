@@ -34,7 +34,7 @@ export default function Footer() {
             {/* Social links */}
             <div className="flex items-center gap-3">
               {[
-                { icon: Linkedin, href: "#" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/katal-technologies" },
                 { icon: Twitter, href: "#" },
                 { icon: Mail, href: "mailto:hello@katal.pk" },
               ].map(({ icon: Icon, href }, i) => (
