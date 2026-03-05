@@ -1,0 +1,42 @@
+name: Deploy Next.js App to cPanel
+
+on:
+  push:
+    branches:
+      - main  # or your deployment branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the code
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Step 2: Install Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: yarn install --frozen-lockfile
+
+    # Step 4: Build and export the Next.js app
+    - name: Build and Export Next.js App
+      env:
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+      run: |
+        yarn build
+
+    # Step 5: Deploy via FTP to cPanel
+    - name: Deploy to cPanel via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: out/ 
+        server-dir: /     
