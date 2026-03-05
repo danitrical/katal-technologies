@@ -5,7 +5,7 @@ import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const footerLinks = {
   Services: ["Web Development", "Mobile Apps", "Cloud & DevOps", "AI Solutions"],
-  Company: ["About", "Process", "Tech Stack", "Contact"],
+  Company: ["About", "Projects", "Process", "Tech Stack", "Contact"],
 };
 
 export default function Footer() {

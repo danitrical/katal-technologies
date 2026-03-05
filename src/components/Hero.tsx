@@ -157,8 +157,8 @@ export default function Hero() {
           className="mt-20 pt-10 border-t border-purple-brand/15 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
         >
           {[
-            { value: "50+", label: "Projects Delivered" },
-            { value: "3", label: "Years of Expertise" },
+            { value: "5+", label: "Projects Delivered" },
+            { value: "1", label: "Years of Expertise" },
             { value: "100%", label: "Client Satisfaction" },
             { value: "4", label: "Core Services" },
           ].map((stat) => (
